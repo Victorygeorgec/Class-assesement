@@ -1,0 +1,145 @@
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	padding: 20px;
+}
+
+main {
+	/* position: relative; */
+}
+
+.toggle-container {
+	height: 50px;
+	width: 50px;
+	/* background-color: red; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	cursor: pointer;
+}
+
+.toggler {
+	height: 40px;
+	width: 40px;
+	position: absolute;
+	opacity: 0;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.toggler:checked ~ .menu-icon {
+	transform: rotate(45deg);
+}
+
+.toggler:checked ~ .menu-icon::before {
+	transform: rotate(90deg);
+	top: 0px;
+}
+
+.toggler:checked ~ .menu-icon::after {
+	display: none;
+}
+
+.toggler:checked ~ .navbar {
+	transform: scaleY(1);
+}
+
+.menu-icon {
+	width: 40px;
+	height: 2px;
+	background-color: #000;
+	position: relative;
+	transition: 200ms ease;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+	content: '';
+	height: 2px;
+	width: 100%;
+	background-color: #000;
+	position: absolute;
+	top: -12px;
+	transition: 200ms ease;
+}
+
+.menu-icon::after {
+	top: 12px;
+}
+
+/* Nav */
+.navbar {
+	background-color: blue;
+	position: absolute;
+	top: 50px;
+	transform: scaleY(0);
+	transition: 200ms ease;
+	transform-origin: top;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	align-items: flex-start;
+}
+
+.list .list-item {
+	list-style: none;
+	margin-left: 0px;
+}
+
+/* Form */
+.custom-form {
+	max-width: 540px;
+	width: 100%;
+}
+
+.form-control {
+	height: 50px;
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.form-control label {
+	position: absolute;
+	transition: 200ms ease;
+}
+
+.form-control input {
+	height: 50px;
+	width: 100%;
+	border: 0px;
+	border-bottom: 1px solid black;
+	padding: 10px 0px;
+	outline: none;
+}
+
+.form-control input:focus {
+	/* top: -20px; */
+	border-bottom-color: blue;
+	transition: 200ms ease;
+}
+
+.form-control input:focus ~ label {
+	transform: translateY(-25px);
+	color: blue;
+	font-size: 12px;
+}
+
+.form-control input:focus + label,
+.form-control input:valid + label {
+	transform: translateY(-25px);
+	font-size: 12px;
+}
+
+.form-control input:valid + label{
+	transform: translateY(-25px); !
+	important;
+	font-size: 12px;
+}
